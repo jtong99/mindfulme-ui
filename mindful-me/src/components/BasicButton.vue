@@ -1,16 +1,15 @@
 <template>
-  <button
-    @click="handleClick"
-    :disabled="disabled"
-    class="border font-semibold py-2 px-4 rounded-lg shadow-md"
-    :class="btnClass"
-  >
-    <div>{{ props.label }}</div>
+  <button @click="handleClick" :disabled="disabled" class="border font-semibold py-2 px-4 rounded-lg shadow-md"
+    :class="btnClass">
+    <div>{{ label }}</div>
   </button>
 </template>
 
 <script setup>
-const emits = defineEmits(['emitClick'])
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
+// const emits = defineEmits(['emitClick'])
 const props = defineProps({
   label: {
     type: String,
@@ -34,7 +33,11 @@ const props = defineProps({
 })
 
 const handleClick = () => {
-  emits('emitClick', props.action)
+  if (props.action === 'sign-in') {
+    router.push('/sign-in');
+  } else if (props.action === 'sign-up') {
+    router.push('/sign-up');
+  }
   console.log('emit', props.action)
 }
 </script>

@@ -20,5 +20,5 @@
 </template>
 
 <script setup>
-import BasicButton from '../BasicButton.vue'
+import BasicButton from '@/components/BasicButton.vue';
 </script>
