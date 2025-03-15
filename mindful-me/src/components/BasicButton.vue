@@ -1,6 +1,6 @@
 <template>
   <button @click="handleClick" :disabled="disabled" class="border font-semibold py-2 px-4 rounded-lg shadow-md"
-    :class="btnClass">
+    :class="[btnClass, radius]">
     <div>{{ label }}</div>
   </button>
 </template>
@@ -15,10 +15,6 @@ const props = defineProps({
     type: String,
     default: '',
   },
-  loading: {
-    type: Boolean,
-    default: false,
-  },
   action: {
     type: String,
     required: true,
@@ -26,10 +22,6 @@ const props = defineProps({
   btnClass: {
     type: String,
   },
-  width: {
-    type: String,
-    default: "w-28"
-  }
 })
 
 const handleClick = () => {

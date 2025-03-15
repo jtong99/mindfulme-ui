@@ -1,10 +1,7 @@
 <template>
-  <header class="sticky top-0 py-7">
-    <div class="uppercase font-bold text-6xl justify-self-center font-doto">mindful me</div>
-  </header>
   <div class="flex flex-col gap-6 items-center font-mono py-7">
     <div class="font-semibold text-3xl">Welcome to MindfulMe!</div>
-    <div class="text-base mono">We are thrilled that you have chosen us.</div>
+    <div class="text-base">We are thrilled that you have chosen us.</div>
     <BasicButton
       label="Sign Up"
       action="sign-up"

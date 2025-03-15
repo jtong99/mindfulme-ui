@@ -7,6 +7,10 @@ export default {
         doto: ['Doto', 'sans-serif'],
         spaceMono: ['Space Mono', 'monospace'],
       },
+      width: {
+        '300': '300px',
+        '500': '500px'
+      }
     },
   },
   plugins: [],
