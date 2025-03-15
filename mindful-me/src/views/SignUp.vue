@@ -44,7 +44,7 @@
     <BasicButton
       label="Sign Up"
       action="sign-up"
-      btnClass="bg-blue-500 text-white w-full"
+      btnClass="border font-semibold py-2 px-4 shadow-md bg-blue-500 hover:bg-white hover:border-black text-white hover:text-black w-full"
       @click="handleSignUp"
     />
   </div>
@@ -111,7 +111,7 @@ const handleSignUp = () => {
   //   padding: 20px;
   //   border: 1px solid #ddd;
   //   border-radius: 5px;
-  @apply bg-teal-100 flex flex-col gap-6 items-center font-mono py-7 w-96 m-auto my-4 p-6 border rounded-md text-center;
+  @apply bg-teal-100 flex flex-col gap-6 items-center font-mono py-7 w-96 m-auto my-4 p-6 border rounded-md text-center max-w-none sm:max-w-fit;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   //   text-align: center;
 }

@@ -10,6 +10,9 @@ export default {
       width: {
         '300': '300px',
         '500': '500px'
+      },
+      borderRadius: {
+        '40': '40px'
       }
     },
   },

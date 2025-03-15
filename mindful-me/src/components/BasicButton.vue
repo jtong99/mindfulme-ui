@@ -1,12 +1,11 @@
 <template>
-  <button @click="handleClick" :disabled="disabled" class="border font-semibold py-2 px-4 rounded-lg shadow-md"
-    :class="[btnClass, radius]">
+  <button @click="handleClick" :disabled="disabled" :class="[btnClass, rounded]">
     <div>{{ label }}</div>
   </button>
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router'
 
 const router = useRouter()
 // const emits = defineEmits(['emitClick'])
@@ -22,13 +21,21 @@ const props = defineProps({
   btnClass: {
     type: String,
   },
+  rounded: {
+    type: String,
+    default: 'rounded-lg',
+  },
+  hasBorder: {
+    type: Boolean,
+    default: true,
+  },
 })
 
 const handleClick = () => {
   if (props.action === 'sign-in') {
-    router.push('/sign-in');
+    router.push('/sign-in')
   } else if (props.action === 'sign-up') {
-    router.push('/sign-up');
+    router.push('/sign-up')
   }
   console.log('emit', props.action)
 }

@@ -17,7 +17,7 @@
     <BasicButton
       label="Sign In"
       action="sign-in"
-      btnClass="bg-green-500 text-white w-full"
+      btnClass="border font-semibold py-2 px-4 shadow-md bg-green-500 hover:bg-white hover:border-black text-white hover:text-black w-full"
       @click="handleSignIn"
     />
   </div>
