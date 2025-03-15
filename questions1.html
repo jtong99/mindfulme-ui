@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+  <style>
+    body {
+      width: 375px;
+      border-radius: 10px;
+      border: 1px solid greenyellow;
+      min-height: 100vh;
+      margin: auto;
+    }
+
+    .nav {
+      width: 100%;
+      height: 70px;
+      display: flex;
+      position: relative;
+
+    }
+
+    .bi-arrow-left {
+      margin: 20px;
+      left: 10px;
+    }
+
+    .progress {
+      position: absolute;
+      margin: 20px 20px 20px 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+    }
+
+    .blank {
+      display: none;
+    }
+
+    .progress-bar {
+      margin: auto;
+      width: 80%;
+      border-radius: 5px;
+      background-color: gray;
+      height: 1rem;
+    }
+
+    .progress-value {
+      background-color: purple;
+      width: 50%;
+      border-radius: 5px;
+      height: 1rem;
+      transition: 300ms;
+    }
+
+    .question-section {
+      text-align: center;
+    }
+
+    .question {
+      margin-top: 10px;
+    }
+
+    .button-send {
+      width: 80%;
+      border-radius: 5px;
+      background-color: blueviolet;
+      padding: 10px;
+      display: block;
+      margin: auto;
+    }
+
+    #message {
+      height: 300px;
+      width: 80%;
+      margin: 20px;
+      border-radius: 8px;
+      border: 2px gray solid;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav"><i class="bi bi-arrow-left"></i>
+    <div class="progress">QuestionProgress</div>
+  </div>
+  <div class="progress-bar">
+    <div class="progress-value"></div>
+  </div>
+  <section class="question-section">
+    <div class="question">Here is the question</div>
+    <form>
+      <textarea id="message" name="user_message"></textarea>
+      <button type="submit" class="button-send">Next</button>
+    </form>
+  </section>
+</body>
+
+</html>
+<script>
+  let progress = 50;
+  const button = document.querySelector('.button-send')
+  const progdata = document.querySelector('.progress')
+  const progvalue = document.querySelector('.progress-value')
+
+  function updateProgress() {
+    progvalue.style.width = progress + '%';
+    progdata.innerHTML = progress + '%'
+  }
+
+  button.addEventListener('click', (event) => {
+
+    event.preventDefault();
+    progress += 10;
+    console.log(progress);
+
+    if (progress > 100) progress = 100;
+    updateProgress();
+  });
+</script>
