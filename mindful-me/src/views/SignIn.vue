@@ -2,12 +2,7 @@
   <div class="form-container">
     <div class="label">Sign In</div>
 
-    <InputForm
-      label="Email"
-      id="signin-email"
-      v-model="email"
-      placeholder="Enter your email"
-    />
+    <InputForm label="Email" id="signin-email" v-model="email" placeholder="Enter your email" />
 
     <InputForm
       label="Password"
@@ -29,7 +24,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import InputForm from '@/components/InputForm.vue'
 import BasicButton from '@/components/BasicButton.vue'
 import { signin } from '@/api/api'
@@ -40,37 +35,32 @@ const errorMessage = ref('')
 const userData = ref('')
 
 const handleSignIn = () => {
-  console.log('username', email.value)
-  console.log('password', password.value)
   const payload = {
     email: email.value,
     password: password.value,
   }
-  console.log("all details", !email.value || !password.value)
-  if (!email.value || !password.value) {
+
+  const hasEnteredAllDetails = computed(() => {
+    return email.value && password.value
+  })
+
+  if (!hasEnteredAllDetails.value) {
     errorMessage.value = 'Please fill in all fields.'
   } else {
     signin(payload)
       .then((response) => {
-        errorMessage.value = ""
+        errorMessage.value = ''
         console.log('API response', response)
         userData.value = response.data
         if (response.success) {
-            // route to questionnaire
+          // route to questionnaire
         }
       })
       .catch((error) => {
-        errorMessage.value = error
+        errorMessage.value = error.response.data.message
         console.error('Error while calling signup api', error)
       })
   }
-  //   if (!username.value || !password.value) {
-  //     errorMessage.value = "Please fill in all fields.";
-  //     return;
-  //   }
-
-  //   errorMessage.value = "";
-  //   alert(`Sign-in successful for: ${username.value}`);
 }
 </script>
 

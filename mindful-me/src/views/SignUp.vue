@@ -97,7 +97,7 @@ const handleSignUp = () => {
         }
       })
       .catch((error) => {
-        errorMessage.value = error
+        errorMessage.value = error.response.data.message
         console.error('Error while calling signup api', error)
       })
   }

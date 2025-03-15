@@ -23,23 +23,3 @@ defineProps({
   modelValue: String,
 })
 </script>
-
-<!-- <style scoped lang="scss">
-.form-group {
-  margin-bottom: 15px;
-  text-align: left;
-}
-
-label {
-  display: block;
-  font-weight: bold;
-}
-
-input {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-</style> -->
