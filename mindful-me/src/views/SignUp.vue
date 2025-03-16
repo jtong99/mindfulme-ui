@@ -55,7 +55,9 @@ import { ref, computed } from 'vue'
 import InputForm from '@/components/InputForm.vue'
 import BasicButton from '@/components/BasicButton.vue'
 import { signup } from '@/api/api'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const firstName = ref('')
 const lastName = ref('')
 const email = ref('')
@@ -93,7 +95,8 @@ const handleSignUp = () => {
         console.log('API response', response)
         userData.value = response.data
         if (response.success) {
-            // route to questionnaire
+          // route to questionnaire
+          router.push('/how-are-you-feeling')
         }
       })
       .catch((error) => {
@@ -111,7 +114,7 @@ const handleSignUp = () => {
   //   padding: 20px;
   //   border: 1px solid #ddd;
   //   border-radius: 5px;
-  @apply bg-teal-100 flex flex-col gap-6 items-center font-mono py-7 w-96 m-auto my-4 p-6 border rounded-md text-center max-w-none sm:max-w-fit;
+  @apply bg-teal-100 flex flex-col gap-6 items-center font-mono py-7 w-96 m-auto my-4 p-6 border rounded-md text-center;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   //   text-align: center;
 }

@@ -28,11 +28,15 @@ import { ref, computed } from 'vue'
 import InputForm from '@/components/InputForm.vue'
 import BasicButton from '@/components/BasicButton.vue'
 import { signin } from '@/api/api'
+import { useAuthStore } from '@/stores/auth'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const email = ref('')
 const password = ref('')
 const errorMessage = ref('')
 const userData = ref('')
+const authStore = useAuthStore
 
 const handleSignIn = () => {
   const payload = {
@@ -51,9 +55,12 @@ const handleSignIn = () => {
       .then((response) => {
         errorMessage.value = ''
         console.log('API response', response)
-        userData.value = response.data
+        userData.value = response.data.data
+        authStore.setUserData(userData.value.token)
+        console.log("auth", authStore)
         if (response.success) {
           // route to questionnaire
+          router.push('/how-are-you-feeling')
         }
       })
       .catch((error) => {
