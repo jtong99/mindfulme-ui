@@ -14,6 +14,7 @@
       border: 1px solid greenyellow;
       min-height: 100vh;
       margin: auto;
+      position: relative;
     }
 
     .nav {
@@ -81,10 +82,35 @@
       border-radius: 8px;
       border: 2px gray solid;
     }
+
+    .bgp-forest {
+      z-index: -1;
+      position: absolute;
+    }
+
+    .fadeout {
+      transform: translateX(-100%);
+      transition: 0.5s ease-in-out;
+      opacity: 0;
+    }
+
+    .fade-in-prepare {
+      transform: translateX(100%);
+      opacity: 1;
+    }
+
+    .fadein {
+      transform: translateX(0);
+      transition: 0.5s ease-in-out;
+      opacity: 1;
+
+
+    }
   </style>
 </head>
 
 <body>
+  <img src="page2.1.png" alt="bgp" id="bgp-forest">
   <div class="nav"><i class="bi bi-arrow-left"></i>
     <div class="progress">QuestionProgress</div>
   </div>
@@ -103,9 +129,38 @@
 </html>
 <script>
   let progress = 50;
+  let qnumber = 0
+  const questions = [
+    'This is question2',
+    'This is question3'
+  ]
   const button = document.querySelector('.button-send')
   const progdata = document.querySelector('.progress')
   const progvalue = document.querySelector('.progress-value')
+  const textarea = document.querySelector('#message')
+  const question = document.querySelector('.question')
+
+  function updateQuestion() {
+    question.classList.add('fadeout')
+    setTimeout(() => {
+      question.innerHTML = questions[qnumber]
+      qnumber++;
+      question.classList.remove('fadeout')
+      question.classList.add('fade-in-prepare')
+      setTimeout(() => {
+        question.classList.add('fadein')
+        console.log('fadein');
+        setTimeout(() => {
+          question.classList.remove('fade-in-prepare')
+          question.classList.remove('fadein')
+        }, 500)
+
+
+
+      }, 100)
+    }, 500)
+
+  }
 
   function updateProgress() {
     progvalue.style.width = progress + '%';
@@ -113,11 +168,13 @@
   }
 
   button.addEventListener('click', (event) => {
+
     event.preventDefault();
     progress += 10;
     console.log(progress);
-
+    textarea.value = ''
     if (progress > 100) progress = 100;
     updateProgress();
+    updateQuestion();
   });
 </script>
