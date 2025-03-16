@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+  <style>
+    body {
+      width: 375px;
+      border-radius: 10px;
+      border: 1px solid greenyellow;
+      min-height: 100vh;
+      margin: auto;
+    }
+
+    .page {
+      width: 100%;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .fade-out-left {
+      transform: translateX(-100%);
+      transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+      opacity: 0;
+    }
+
+    .common {
+      transform: translateX(200%);
+      opacity: 0;
+
+    }
+
+    .fade-in-right {
+      transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+      transform: translateX(100%);
+      opacity: 1;
+    }
+
+    #bi-arrow-down-circle {
+      position: absolute;
+      bottom: 10px;
+    }
+
+    .active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="welcome.png" alt="welcome" class="page"><i class="bi bi-arrow-down-circle" id="bi-arrow-down-circle"></i>
+
+</body>
+
+</html>
+<script>
+  const pages = [
+    { src: 'welcome.png' },
+    { src: 'page2.png' },
+    { src: 'page3.png' }
+  ]
+
+  const img = document.querySelector('.page')
+  let i = 0
+  let timer = setInterval(
+    function time() {
+      i++;
+      img.classList.add('fade-out-left');
+      setTimeout(() => {
+        img.src = pages[i].src;
+        img.classList.add('common');
+
+        img.classList.remove('fade-out-left');
+        img.classList.add('fade-in-right');
+
+      }, 500)
+
+
+    }, 1000
+  )
+
+</script>
