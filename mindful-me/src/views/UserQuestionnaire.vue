@@ -77,7 +77,7 @@ const handleSubmit = () => {
     energy_level: questionnaires.energy_level.value,
     stress_level: questionnaires.stress_level.value,
     wellbeing: questionnaires.wellbeing.value,
-    // notes:
+    notes: inputValue.value
   }
   checkins(payload)
     .then((response) => {
